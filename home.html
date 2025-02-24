@@ -1,0 +1,191 @@
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escola Leitora</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #6200ea;
+      color: white;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      position: relative;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #6200ea;
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 5px;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #4a00b4;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-bar input {
+      padding: 10px 25px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .search-bar button {
+      padding: 10px 10px;
+      margin-left: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4a00b4;
+      color: white;
+      cursor: pointer;
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    main {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      padding: 20px 0;
+    }
+
+    article {
+      background: white;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    article:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+      width: 122px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    p {
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <span>OBES</span>
+    <nav class="nav-links">
+      <div class="dropdown">
+        <a>Início</a>
+        <div class="dropdown-content">
+          <a href="#">Página Inicial</a>
+          <a href="#">Sobre</a>
+          <a href="#">Contato</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a>Categorias</a>
+        <div class="dropdown-content">
+          <a href="#">Ficção</a>
+          <a href="#">Romance</a>
+          <a href="#">Mistério</a>
+          <a href="#">Infantil</a>
+        </div>
+      </div>
+    </nav>
+    <div class="search-bar">
+      <input type="text" placeholder="O que está procurando?" />
+      <button>Pesquisar</button>
+    </div>
+    <div class="icons">
+      <span>🛒</span>
+      <span>👤 Olá, Fulano!</span>
+    </div>
+  </header>
+  <main>
+    <h2>NOVIDADES</h2>
+    <section>
+      <article>
+        <img src="crepusculo.jpg" alt="Livro 1" />
+        <p>Crepúsculo Livro 1</p>
+        <span>R$ 29,90</span>
+      </article>
+      <article>
+        <img src="lago.jpg" alt="Livro 2" />
+        <p>A Garota do Lago</p>
+        <span>R$ 19,90</span>
+      </article>
+      <article>
+        <img src="FADAS.jpg" alt="Livro 3" />
+        <p>Conto de Fadas</p>
+        <span>R$ 39,90</span>
+      </article>
+      <article>
+        <img src="quarto.jpg" alt="Livro 4" />
+        <p>Quarto de Despejo</p>
+        <span>R$ 49,90</span>
+      </article>
+    </section>
+  </main>
+</body>
+
+</html>

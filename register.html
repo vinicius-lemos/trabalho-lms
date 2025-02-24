@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="./styles/register.css">
+</head>
+
+<body>
+  <div class="main-content">
+    <div class="background"></div>
+
+    <main>
+      <img src="./img/logo-obes.svg" alt="Logo Obes" class="logo-obes" />
+
+      <form>
+        <label id="name">Nome Completo</label>
+        <input type="text" name="name" id="name" placeholder="Digite seu nome completo" />
+
+        <label id="email">E-mail</label>
+        <input type="email" name="email" id="email" placeholder="Digite seu e-mail" />
+
+        <label id="password">Senha</label>
+        <input type="password" name="password" id="password" placeholder="Digite sua senha" minlength="8" />
+
+        <label id="password-confirm">Confirmação da senha</label>
+        <input type="password" name="password-confirm" id="password-confirm" placeholder="Digite sua senha novamente" minlength="8" />
+
+        <div class="buttons">
+          <a href="./login.html" class="button cancel">Cancelar</a>
+          <a href="./home.html" class="button create">Criar conta</a>
+        </div>
+      </form>
+    </main>
+  </div>
+</body>
+
+</html>
