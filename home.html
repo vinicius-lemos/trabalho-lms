@@ -169,6 +169,22 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .submit-btn {
+      background-color: #6200ea;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
   </style>
 </head>
 
@@ -204,25 +220,29 @@
   </header>
 
   <main>
+    <div class="full-width" style="text-align: center;">
+      <a href="./cadastrarLivro.html" class="submit-btn">Cadastrar Livro</a>
+    </div>
+
     <h2>NOVIDADES</h2>
     <section id="booksSection">
       <article class="search-result" id="book1">
-        <img src="crepusculo.jpg" alt="Livro 1" />
+        <img src="https://m.media-amazon.com/images/I/618fXbK+OkL._AC_UF1000,1000_QL80_.jpg" alt="Livro 1" />
         <p>Crepúsculo Livro 1</p>
         <span>R$ 29,90</span>
       </article>
       <article class="search-result" id="book2">
-        <img src="lago.jpg" alt="Livro 2" />
+        <img src="https://m.media-amazon.com/images/I/81LRk6+p1HL.jpg" alt="Livro 2" />
         <p>A Garota do Lago</p>
         <span>R$ 19,90</span>
       </article>
       <article class="search-result" id="book3">
-        <img src="FADAS.jpg" alt="Livro 3" />
+        <img src="https://m.media-amazon.com/images/I/81UvPpuHabL.jpg" alt="Livro 3" />
         <p>Conto de Fadas</p>
         <span>R$ 39,90</span>
       </article>
       <article class="search-result" id="book4">
-        <img src="quarto.jpg" alt="Livro 4" />
+        <img src="https://m.media-amazon.com/images/I/81Ew3-U+sRL._AC_UF1000,1000_QL80_.jpg" alt="Livro 4" />
         <p>Quarto de Despejo</p>
         <span>R$ 49,90</span>
       </article>
@@ -247,7 +267,7 @@
     <!-- Seção de "Doações" -->
     <div class="donations-section" id="donationsSection">
       <h3>Solicitar Doação de Livro</h3>
-      <img src="livro-doacao.jpg" alt="Livro para doação" />
+      <img src="https://edit.org/img/blog/zz7-flyer-personalizavel-para-capas-de-livros.webp" alt="Livro para doação" />
       <p>
         Este livro está disponível para doação. Clique abaixo para solicitar.
       </p>
