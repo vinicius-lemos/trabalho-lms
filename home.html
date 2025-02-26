@@ -127,6 +127,48 @@
       margin: 10px 0 5px;
       font-weight: bold;
     }
+
+    .error-message {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 24px;
+      color: #f44336;
+    }
+
+    .search-result {
+      display: none;
+    }
+
+    .about-section {
+      display: none;
+      padding: 20px;
+    }
+
+    .about-section h3 {
+      margin-bottom: 20px;
+    }
+
+    .donations-section {
+      display: none;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .donations-section img {
+      width: 200px;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .donations-section button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #6200ea;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -135,11 +177,10 @@
     <span>OBES</span>
     <nav class="nav-links">
       <div class="dropdown">
-        <a>Início</a>
+        <a href="#" id="homeLink">Início</a>
         <div class="dropdown-content">
-          <a href="#">Página Inicial</a>
-          <a href="#">Sobre</a>
-          <a href="#">Contato</a>
+          <a href="#" id="aboutLink">Sobre</a>
+          <a href="#" id="donationsLink">Doações</a> <!-- Substituindo "Contato" por "Doações" -->
         </div>
       </div>
       <div class="dropdown">
@@ -153,39 +194,148 @@
       </div>
     </nav>
     <div class="search-bar">
-      <input type="text" placeholder="O que está procurando?" />
-      <button>Pesquisar</button>
+      <input type="text" id="searchInput" placeholder="O que está procurando?" />
+      <button id="searchButton">Pesquisar</button>
     </div>
     <div class="icons">
       <span>🛒</span>
       <span>👤 Olá, Fulano!</span>
     </div>
   </header>
+
   <main>
     <h2>NOVIDADES</h2>
-    <section>
-      <article>
+    <section id="booksSection">
+      <article class="search-result" id="book1">
         <img src="crepusculo.jpg" alt="Livro 1" />
         <p>Crepúsculo Livro 1</p>
         <span>R$ 29,90</span>
       </article>
-      <article>
+      <article class="search-result" id="book2">
         <img src="lago.jpg" alt="Livro 2" />
         <p>A Garota do Lago</p>
         <span>R$ 19,90</span>
       </article>
-      <article>
+      <article class="search-result" id="book3">
         <img src="FADAS.jpg" alt="Livro 3" />
         <p>Conto de Fadas</p>
         <span>R$ 39,90</span>
       </article>
-      <article>
+      <article class="search-result" id="book4">
         <img src="quarto.jpg" alt="Livro 4" />
         <p>Quarto de Despejo</p>
         <span>R$ 49,90</span>
       </article>
     </section>
+
+    <div id="errorMessage" class="error-message" style="display: none;">
+      <p><strong>Livro não encontrado</strong></p>
+      <p>Desculpe, não encontramos nenhum livro com o termo pesquisado. Tente novamente.</p>
+    </div>
+
+    <!-- Seção de "Sobre" -->
+    <div class="about-section" id="aboutSection">
+      <h3>Lorem Ipsum</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat.
+      </p>
+    </div>
+
+    <!-- Seção de "Doações" -->
+    <div class="donations-section" id="donationsSection">
+      <h3>Solicitar Doação de Livro</h3>
+      <img src="livro-doacao.jpg" alt="Livro para doação" />
+      <p>
+        Este livro está disponível para doação. Clique abaixo para solicitar.
+      </p>
+      <button id="donateButton">Solicitar Doação</button>
+    </div>
   </main>
+
+  <script>
+    const books = [
+      { id: 'book1', title: 'Crepúsculo Livro 1' },
+      { id: 'book2', title: 'A Garota do Lago' },
+      { id: 'book3', title: 'Conto de Fadas' },
+      { id: 'book4', title: 'Quarto de Despejo' }
+    ];
+
+    const searchButton = document.getElementById('searchButton');
+    const searchInput = document.getElementById('searchInput');
+    const errorMessage = document.getElementById('errorMessage');
+    const booksSection = document.getElementById('booksSection');
+    const homeLink = document.getElementById('homeLink');
+    const aboutLink = document.getElementById('aboutLink');
+    const donationsLink = document.getElementById('donationsLink');
+    const aboutSection = document.getElementById('aboutSection');
+    const donationsSection = document.getElementById('donationsSection');
+
+    searchButton.addEventListener('click', function () {
+      const query = searchInput.value.toLowerCase();
+      let found = false;
+
+      // Esconde todos os livros
+      const allBooks = document.querySelectorAll('.search-result');
+      allBooks.forEach(book => {
+        book.style.display = 'none';
+      });
+
+      // Busca livros compatíveis
+      books.forEach(book => {
+        const bookElement = document.getElementById(book.id);
+        if (book.title.toLowerCase().includes(query)) {
+          bookElement.style.display = 'block';
+          found = true;
+        }
+      });
+
+      // Mostra a mensagem de erro
+      if (!found) {
+        errorMessage.style.display = 'block';
+        aboutSection.style.display = 'none'; // Esconde a seção "Sobre"
+        donationsSection.style.display = 'none'; // Esconde a seção "Doações"
+      } else {
+        errorMessage.style.display = 'none';
+      }
+    });
+
+    homeLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo(0, 0); // Voltar ao topo
+      searchInput.value = ''; // Limpa o campo de pesquisa
+      errorMessage.style.display = 'none'; // Esconde a mensagem de erro
+      aboutSection.style.display = 'none'; // Esconde a seção "Sobre"
+      donationsSection.style.display = 'none'; // Esconde a seção "Doações"
+      const allBooks = document.querySelectorAll('.search-result');
+      allBooks.forEach(book => {
+        book.style.display = 'block'; // Exibe todos os livros
+      });
+    });
+
+    aboutLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      aboutSection.style.display = 'block'; // Exibe a seção sobre
+      errorMessage.style.display = 'none'; // Esconde a mensagem de erro
+      donationsSection.style.display = 'none'; // Esconde a seção "Doações"
+      booksSection.style.display = 'none'; // Esconde a seção de livros
+    });
+
+    donationsLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      donationsSection.style.display = 'block'; // Exibe a seção de Doações
+      errorMessage.style.display = 'none'; // Esconde a mensagem de erro
+      aboutSection.style.display = 'none'; // Esconde a seção "Sobre"
+      booksSection.style.display = 'none'; // Esconde a seção de livros
+    });
+
+    const donateButton = document.getElementById('donateButton');
+    donateButton.addEventListener('click', function () {
+      alert('Doação solicitada!'); // Exibe a mensagem de doação solicitada
+    });
+  </script>
 </body>
 
 </html>
